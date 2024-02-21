@@ -216,7 +216,8 @@ void HAL_adc_start_conversion(const uint8_t adc_pin) {
   esp_adc_cal_get_voltage((adc_channel_t)chan, &characteristics[attenuations[chan]], &mv);
   // HAL_adc_result = mv * 1023.0 / 3300.0;
   HAL_adc_result = mv * 1023.0 / 2980.0;
-  /*if(HAL_adc_result<1000){
+  /*
+ if(adc_pin==36){
     SERIAL_ECHO(adc_pin);
     SERIAL_CHAR(':');
     SERIAL_ECHO(HAL_adc_result);

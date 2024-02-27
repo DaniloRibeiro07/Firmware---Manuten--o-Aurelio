@@ -151,6 +151,7 @@ uint8_t HAL_get_reset_source() { return rtc_get_reset_reason(1); }
 
 void HAL_reboot() { ESP.restart(); }
 
+
 void _delay_ms(int delay_ms) { delay(delay_ms); }
 
 // return free memory between end of heap (or end bss) and whatever is current
@@ -216,13 +217,13 @@ void HAL_adc_start_conversion(const uint8_t adc_pin) {
   esp_adc_cal_get_voltage((adc_channel_t)chan, &characteristics[attenuations[chan]], &mv);
   // HAL_adc_result = mv * 1023.0 / 3300.0;
   HAL_adc_result = mv * 1023.0 / 2980.0;
-  /*
- if(adc_pin==36){
-    SERIAL_ECHO(adc_pin);
-    SERIAL_CHAR(':');
-    SERIAL_ECHO(HAL_adc_result);
-    SERIAL_CHAR('\n');
-  }*/
+  
+ if(adc_pin==34){
+    //SERIAL_ECHO(adc_pin);
+    //SERIAL_CHAR(':');
+    //SERIAL_ECHO(HAL_adc_result);
+    //SERIAL_CHAR('\n');
+  }
 
   // Change the attenuation level based on the new reading
   adc_atten_t atten;
